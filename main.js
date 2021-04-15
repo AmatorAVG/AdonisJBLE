@@ -46,7 +46,9 @@ function requestBluetoothDevice() {
   log('Requesting bluetooth device...');
 
   return navigator.bluetooth.requestDevice({
-  acceptAllDevices: true,
+  filters: [{
+    name: 'ESP32'
+  }],
   optionalServices: ['battery_service']
 }).
       then(device => {
