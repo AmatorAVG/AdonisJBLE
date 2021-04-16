@@ -49,7 +49,7 @@ function requestBluetoothDevice() {
   filters: [{
     name: 'ESP32'
   }],
-  optionalServices: [0x1800]
+  optionalServices: ["6e400001-b5a3-f393-e0a9-e50e24dcca9e"]
 }).
       then(device => {
         log('"' + device.name + '" bluetooth device selected');
@@ -85,12 +85,12 @@ function connectDeviceAndCacheCharacteristic(device) {
       then(server => {
         log('GATT server connected, getting service...');
 
-        return server.getPrimaryService(0x1800);
+        return server.getPrimaryService("6e400001-b5a3-f393-e0a9-e50e24dcca9e");
       }).
       then(service => {
-        log('4 Service found, getting characteristic...');
+        log('Service found, getting characteristic...');
 
-        return service.getCharacteristic(0x2a00);
+        return service.getCharacteristic("6e400002-b5a3-f393-e0a9-e50e24dcca9e");
       }).
       then(characteristic => {
         log('Characteristic found');
