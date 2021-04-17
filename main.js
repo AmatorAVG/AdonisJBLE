@@ -88,9 +88,9 @@ function connectDeviceAndCacheCharacteristic(device) {
         return server.getPrimaryService("6e400001-b5a3-f393-e0a9-e50e24dcca9e");
       }).
       then(service => {
-        log('1 Service found, getting characteristic...');
+        log('2 Service found, getting characteristic...');
 
-        return service.getCharacteristic();
+        return service.getCharacteristics();
       }).
       then(characteristic => {
         log('Characteristic found');
