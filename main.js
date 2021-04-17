@@ -88,14 +88,14 @@ function connectDeviceAndCacheCharacteristic(device) {
         return server.getPrimaryService("6e400001-b5a3-f393-e0a9-e50e24dcca9e");
       }).
       then(service => {
-        log('6 Service found, getting characteristic...');
+        log('7 Service found, getting characteristic...');
 
         return service.getCharacteristic("6e400002-b5a3-f393-e0a9-e50e24dcca9e");
       }).
       then(characteristic => {
         log('Characteristic found');
-        log('> Characteristics: ' +
-      characteristic.map(c => c.uuid).join('\n' + ' '.repeat(19)));
+      //   log('> Characteristics: ' +
+      // characteristic.map(c => c.uuid).join('\n' + ' '.repeat(19)));
         characteristicCache = characteristic;
 
         return characteristicCache;
@@ -105,7 +105,7 @@ function connectDeviceAndCacheCharacteristic(device) {
 // Включение получения уведомлений об изменении характеристики
 function startNotifications(characteristic) {
   log('Starting notifications...');
-
+  log('> Characteristics: ' + characteristic.uuid);
   return characteristic.startNotifications().
       then(() => {
         log('Notifications started');
